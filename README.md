@@ -2,7 +2,7 @@
 
 ### Clinic Call Communication System
 
-**A local-network communication solution for healthcare environments.**
+**A local network communication solution for healthcare environments.**
 
 A Python-based clinic communication system that allows a doctor to send prescription, patient file, laboratory result and assistance requests from an iPhone to a receptionist's computer. Requests are displayed on a central dashboard, where they can be acknowledged, processed and completed.
 
