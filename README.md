@@ -1,206 +1,181 @@
-🏥 Clinic Call Communication System
-A local-network clinic communication system that allows doctors to send service requests from an iPhone directly to a receptionist dashboard.
-The system was developed to solve a simple but common problem in clinic operations: doctors having to verbally call reception whenever they need a prescription, patient file, laboratory results or assistance.
+# 🏥 ClinicCallSystem
 
-📌 Overview
-The Clinic Call Communication System connects a doctor's mobile device to a receptionist computer through the clinic's local Wi-Fi network.
-The doctor uses an iPhone as a controller, while reception staff use a computer-based dashboard to receive, acknowledge and complete requests.
+### Clinic Call Communication System
 
-┌──────────────────┐
-│   Doctor iPhone  │
-│                  │
-│ Send Request     │
-└────────┬─────────┘
-         │
-         │ Clinic Wi-Fi
-         ▼
-┌──────────────────┐
-│  Flask Server    │
-│    Python        │
-└────────┬─────────┘
-         │
-         ▼
-┌──────────────────┐
-│ Reception PC     │
-│                  │
-│ Manage Requests  │
-└──────────────────┘
+**A local-network communication solution for healthcare environments.**
 
-✨ Features
-📱 Doctor mobile interface
-🖥️ Receptionist dashboard
-💊 Prescription requests
-📁 Patient file requests
-🧪 Laboratory result requests
-🆘 Assistance requests
-🚨 Urgent assistance requests
-🔔 New request notifications
-🔊 Notification sounds
-✅ Request acknowledgement
-✔️ Request completion
-❌ Request cancellation
-📊 Request statistics
-🕒 Request history
-🟢 Doctor online status
-📲 App-style mobile interface
-📳 Vibration feedback
-💾 SQLite database
-🛠️ Technologies
-Python
-Flask
-HTML5
-CSS3
-JavaScript
-SQLite
-Progressive Web App (PWA)
-Local TCP/IP Networking
-📂 Project Structure
+A Python-based clinic communication system that allows a doctor to send prescription, patient file, laboratory result and assistance requests from an iPhone to a receptionist's computer. Requests are displayed on a central dashboard, where they can be acknowledged, processed and completed.
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square\&logo=python\&logoColor=white) ![Flask](https://img.shields.io/badge/Flask-000000?style=flat-square\&logo=flask\&logoColor=white) ![SQLite](https://img.shields.io/badge/Database-SQLite-003B57?style=flat-square\&logo=sqlite\&logoColor=white) ![PWA](https://img.shields.io/badge/Mobile-PWA-5A0FC8?style=flat-square) ![Status](https://img.shields.io/badge/Status-In_Development-orange?style=flat-square)
+
+---
+
+## 🚀 Features
+
+| Feature                    | Description                                    |
+| -------------------------- | ---------------------------------------------- |
+| 📱 Doctor Mobile Interface | Submit requests from an iPhone                 |
+| 💊 Prescription Requests   | Notify reception when a prescription is needed |
+| 📁 Patient File Requests   | Request patient files                          |
+| 🧪 Laboratory Requests     | Request laboratory results                     |
+| 🆘 Assistance Requests     | Request general assistance                     |
+| 🚨 Urgent Assistance       | Flag urgent requests for attention             |
+| 🔔 Notifications & Sound   | Alert reception to incoming requests           |
+| 📳 Vibration Feedback      | Provide mobile feedback where supported        |
+| ✅ Request Acknowledgement  | Confirm that a request has been received       |
+| ✔️ Request Completion      | Track completed requests                       |
+| ❌ Cancellation             | Cancel requests when necessary                 |
+| 📊 Statistics & History    | Review request activity and status             |
+| 🟢 Doctor Online Status    | Display doctor availability                    |
+| 💾 SQLite Database         | Store requests and history locally             |
+
+## ⚙️ Technologies
+
+`Python` · `Flask` · `HTML5` · `CSS3` · `JavaScript` · `SQLite` · `PWA` · `TCP/IP Networking`
+
+## 🔄 How It Works
+
+```text
+┌─────────────────────────┐
+│   DOCTOR'S IPHONE       │
+│   Select Request        │
+└────────────┬────────────┘
+             │
+             ▼
+┌─────────────────────────┐
+│   FLASK WEB SERVER      │
+│   Local Clinic Network  │
+└────────────┬────────────┘
+             │
+             ▼
+┌─────────────────────────┐
+│   RECEPTION DASHBOARD   │
+│   Notification Received │
+└────────────┬────────────┘
+             │
+             ▼
+┌─────────────────────────┐
+│ ACKNOWLEDGE & PROCESS   │
+│   Complete or Cancel    │
+└─────────────────────────┘
+```
+
+**Request lifecycle:** `PENDING` → `ACKNOWLEDGED` → `COMPLETED`
+
+Requests may also be cancelled when necessary.
+
+## 📂 Project Structure
+
+```text
 ClinicCallSystem/
-│
 ├── app.py
-│
 ├── templates/
 │   ├── index.html
 │   ├── doctor.html
 │   └── reception.html
-│
 ├── static/
 │   ├── style.css
 │   ├── doctor.js
 │   └── reception.js
-│
 ├── clinic_calls.db
-│
 └── README.md
+```
 
-⚙️ How It Works
-Doctor
-The doctor opens the application on an iPhone and selects the required service.
-For example:
+## 🛠️ Installation & Setup
 
-Prescription
-Patient File
-Laboratory Results
-Assistance
-Urgent Assistance
+**Requirements:** Python installed on the reception computer and both devices connected to the same clinic network.
 
-After submitting the request, it is sent to the Flask server running on the reception computer.
-Reception
-The receptionist dashboard receives the request and displays:
-Doctor
-Room
-Request type
-Priority
-Time
-Current status
-The receptionist can then acknowledge and process the request.
-Request Lifecycle
-PENDING
-   ↓
-ACKNOWLEDGED
-   ↓
-COMPLETED
+**1. Install Flask**
 
-Requests can also be cancelled when necessary.
-🚀 Installation
-Make sure Python is installed on the reception computer.
-Install Flask:
-
+```bash
 py -m pip install flask
+```
 
-Start the application:
+**2. Start the application**
+
+```bash
 py app.py
+```
 
-The server listens on:
-0.0.0.0:5000
+Configure Flask to listen on `0.0.0.0:5000` for local network access.
 
-Open the receptionist dashboard:
+**3. Open the receptionist dashboard**
+
+```text
 http://127.0.0.1:5000/reception
+```
 
-Find the computer's IP address:
+**4. Find the reception computer's IP address**
+
+```bash
 ipconfig
+```
 
-Then open the doctor interface on the iPhone:
+**5. Open the doctor interface on the iPhone**
+
+```text
 http://YOUR-PC-IP:5000/doctor
+```
 
-Both devices must be connected to the same clinic network.
-📱 Mobile App
-The doctor interface supports an app-style experience using a Progressive Web App.
-On iPhone:
+Replace `YOUR-PC-IP` with the reception computer's actual local IPv4 address.
 
-Open the doctor interface in Safari.
-Tap Share.
-Select Add to Home Screen.
-Launch the system from the Home Screen.
-This allows the doctor to use the system similarly to a normal mobile application without requiring an App Store installation.
-🔐 Security Considerations
-The current system is designed for a controlled local-network environment.
-Recommended security improvements for future versions include:
+> **Important:** Allow access through the computer's firewall only on the trusted clinic network. The server must be configured to expose the required routes before the application can be used.
 
-User authentication
-Role-based access control
-HTTPS
-Session management
-Audit logging
-Database encryption
-Automated backups
-Improved network security
-Access restrictions for authorised devices
-Patient-identifying or unnecessary medical information should not be entered into general request messages.
-🧪 Testing
-The system was tested across the main communication workflow:
-Doctor → Send Request
-          ↓
-Reception → Receive Request
-          ↓
-Reception → Acknowledge
-          ↓
-Reception → Complete
+## 📲 Mobile App Experience
 
-Tested functionality includes:
-Doctor interface
-Reception dashboard
-Request submission
-Request notifications
-Urgent requests
-Acknowledgement
-Completion
-Cancellation
-Request history
-Statistics
-Mobile access
-Local-network communication
-📸 Screenshots
-Doctor Interface
-Add screenshot here
-Reception Dashboard
-Add screenshot here
-Mobile Home Screen
-Add screenshot here
-Request Notification
-Add screenshot here
-🔮 Future Development
-Planned improvements include:
-Multi-doctor support
-Multiple clinic rooms
-User login and authentication
-Real-time WebSocket communication
-Advanced reporting
-Audit logs
-Automated backups
-Centralised administration
-Dedicated Android/iOS application
-Enhanced cybersecurity controls
-🎯 Project Objective
-The objective of this project is to demonstrate how a practical software solution can be developed to improve communication and workflow within a healthcare environment using existing clinic infrastructure.
-The project combines:
+The doctor interface is designed for mobile use and can be installed on the iPhone Home Screen through Safari.
 
-Web Development • Python • Networking • Database Management • System Administration • Mobile Technology • Cybersecurity
+1. Open the doctor interface in Safari.
+2. Tap **Share**.
+3. Select **Add to Home Screen**.
+4. Launch the application from the Home Screen.
 
-👨‍💻 Author
-Kabo Sekoto
+A complete Progressive Web App experience requires the appropriate web app manifest and other PWA assets. Vibration and notification behavior may vary depending on the browser and iOS version.
+
+## 🧪 Testing
+
+| Component                    | Status   |
+| ---------------------------- | -------- |
+| Doctor Mobile Interface      | ✅ Tested |
+| Reception Dashboard          | ✅ Tested |
+| Request Delivery             | ✅ Tested |
+| Urgent Requests              | ✅ Tested |
+| Notifications and Sound        | ✅ Tested |
+| Acknowledge / Complete       | ✅ Tested |
+| Request Cancellation         | ✅ Tested |
+| Request History              | ✅ Tested |
+| Statistics                   | ✅ Tested |
+| Clinic Network Communication | ✅ Tested |
+
+## 🔐 Security Considerations
+
+This project is intended for controlled local-network use. Before deployment in a live healthcare environment, implement and verify:
+
+* User authentication and role-based access control.
+* HTTPS and secure session management.
+* Audit logging and access restrictions.
+* Database protection and encrypted backups.
+* Firewall rules and authorised-device controls.
+* Data minimisation and appropriate retention policies.
+
+**Privacy note:** Avoid including patient names, medical record numbers, diagnoses or other identifying clinical information in general request messages.
+
+## 🔮 Future Development
+
+`Multi-Doctor Support` · `Multiple Clinic Rooms` · `Authentication` · `WebSocket Notifications` · `Audit Logs` · `Advanced Reporting` · `Automated Backups` · `Centralised Administration` · `Enhanced Security`
+
+## 🎯 Project Objective
+
+To develop a practical communication tool that reduces repeated calls and interruptions, improves request visibility and helps clinic staff coordinate routine and urgent tasks using existing computer and mobile infrastructure.
+
+**Skills demonstrated:** Software Development · Web Technologies · Networking · Database Management · System Administration · Mobile Technology · Cybersecurity Awareness
+
+## 👨‍💻 Author
+
+**Kabo Sekoto**
 BSc (Hons) Information Technology
-Master's in Cybersecurity
+Master's in Cybersecurity — In Progress
 
-Clinic Call Communication System
-A practical IT solution designed to improve communication and workflow within a clinic.
+---
+
+*ClinicCallSystem — Improving communication, supporting coordination and streamlining clinic workflows.*
